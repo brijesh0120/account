@@ -4,18 +4,18 @@ import { getSoldEntries } from "../services/entryApi";
 export default function SoldEntries() {
   const [entries, setEntries] = useState([]);
 
-  const loadEntries = async () => {
-    try {
-      const response = await getSoldEntries();
-
-      setEntries(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
-    loadEntries();
+    let cancelled = false;
+
+    getSoldEntries()
+      .then((response) => {
+        if (!cancelled) setEntries(response.data);
+      })
+      .catch(console.error);
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

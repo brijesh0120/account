@@ -127,10 +127,7 @@ export default function AddEntryModal({ onClose, onSaved }) {
 
           <div className="investment-box">
             <span>Total Investment</span>
-
-            <strong>
-              ₹{totalInvestment.toLocaleString("en-IN")}
-            </strong>
+            <strong>₹{totalInvestment.toLocaleString("en-IN")}</strong>
           </div>
 
           <div className="modal-actions">

@@ -1,8 +1,14 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-const activeStockSchema = new mongoose.Schema(
+const entrySchema = new mongoose.Schema(
   {
     stockName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    symbol: {
       type: String,
       required: true,
       trim: true,
@@ -23,7 +29,8 @@ const activeStockSchema = new mongoose.Schema(
 
     livePrice: {
       type: Number,
-      default: 0,
+      required: true,
+      min: 0,
     },
 
     totalInvestment: {
@@ -36,21 +43,35 @@ const activeStockSchema = new mongoose.Schema(
       default: 0,
     },
 
-    percentageDifference: {
+    sellPrice: {
+      type: Number,
+      min: 0,
+    },
+
+    percentage: {
       type: Number,
       default: 0,
     },
 
-    entryDate: {
-      type: Date,
-      default: Date.now,
+    profitLoss: {
+      type: Number,
+      default: 0,
     },
+
+    status: {
+      type: String,
+      enum: ["active", "sold"],
+      default: "active",
+      index: true,
+    },
+
+    soldAt: Date,
   },
   {
     timestamps: true,
   }
 );
 
-const ActiveStock = mongoose.model("ActiveStock", activeStockSchema);
+const Entry = mongoose.models.Entry || mongoose.model("Entry", entrySchema);
 
-export default ActiveStock;
+module.exports = Entry;

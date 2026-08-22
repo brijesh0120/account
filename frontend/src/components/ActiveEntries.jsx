@@ -21,7 +21,17 @@ export default function ActiveEntries() {
   };
 
   useEffect(() => {
-    loadEntries();
+    let cancelled = false;
+
+    getActiveEntries()
+      .then((response) => {
+        if (!cancelled) setEntries(response.data);
+      })
+      .catch(console.error);
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

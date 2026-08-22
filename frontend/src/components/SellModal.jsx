@@ -66,10 +66,7 @@ export default function SellModal({
 
         <div className="investment-box">
           <span>Profit / Loss</span>
-
-          <strong>
-            ₹{profitLoss.toLocaleString("en-IN")}
-          </strong>
+          <strong>₹{profitLoss.toLocaleString("en-IN")}</strong>
         </div>
 
         <div className="modal-actions">

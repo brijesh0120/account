@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API_URL = "/api/entries";
+const API_URL = new URL(
+  "api/entries",
+  import.meta.env.VITE_API_URL,
+).toString();
 
 export const createEntry = async (data) => {
   const response = await axios.post(API_URL, data);
@@ -8,13 +11,13 @@ export const createEntry = async (data) => {
 };
 
 export const getActiveEntries = async () => {
-  const response = await axios.get(`${API_URL}/active`);
-  return response.data;
+  const response = await axios.get(API_URL);
+  return { ...response.data, data: response.data.data.active };
 };
 
 export const getSoldEntries = async () => {
-  const response = await axios.get(`${API_URL}/sold`);
-  return response.data;
+  const response = await axios.get(API_URL);
+  return { ...response.data, data: response.data.data.sold };
 };
 
 export const sellEntry = async (id, sellPrice) => {
