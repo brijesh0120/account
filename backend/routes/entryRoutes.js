@@ -166,4 +166,31 @@ router.put("/:id/sell", async (req, res) => {
   }
 });
 
+/*
+  DELETE ENTRY
+*/
+router.delete("/:id", async (req, res) => {
+  try {
+    const entry = await Entry.findById(req.params.id);
+
+    if (!entry) {
+      return res.status(404).json({
+        success: false,
+        message: "Entry not found",
+      });
+    }
+
+    await Entry.deleteOne({ _id: req.params.id });
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error("DELETE ENTRY ERROR:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete entry",
+    });
+  }
+});
+
 module.exports = router;

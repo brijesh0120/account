@@ -10,8 +10,8 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  background: #f5f7fa;
-  color: #172033;
+  background: #090d18;
+  color: #e8edf7;
 }
 
 button,
@@ -25,18 +25,28 @@ button {
 
 .app {
   min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 15% -10%,
+      rgba(87, 98, 227, 0.2),
+      transparent 34%
+    ),
+    #090d18;
 }
 
-/* Header */
+/* =========================
+   HEADER
+========================= */
 
 .topbar {
   min-height: 82px;
-  background: #ffffff;
-  border-bottom: 1px solid #e7eaf0;
+  background: rgba(13, 18, 32, 0.92);
+  border-bottom: 1px solid #273044;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
+  backdrop-filter: blur(14px);
 }
 
 .brand {
@@ -49,7 +59,7 @@ button {
   width: 42px;
   height: 42px;
   border-radius: 11px;
-  background: #172033;
+  background: linear-gradient(135deg, #7884ff, #4f46e5);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -60,19 +70,20 @@ button {
 
 .brand h1 {
   margin: 0;
+  color: #ffffff;
   font-size: 20px;
   font-weight: 700;
 }
 
 .brand p {
   margin: 3px 0 0;
-  color: #7b8495;
+  color: #9ba8c1;
   font-size: 13px;
 }
 
 .add-button {
   border: 0;
-  background: #172033;
+  background: linear-gradient(135deg, #7884ff, #4f46e5);
   color: #ffffff;
   border-radius: 9px;
   padding: 11px 17px;
@@ -81,6 +92,12 @@ button {
   gap: 8px;
   font-size: 14px;
   font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.add-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
 }
 
 .add-button span {
@@ -88,7 +105,9 @@ button {
   line-height: 12px;
 }
 
-/* Main */
+/* =========================
+   MAIN
+========================= */
 
 .main-content {
   max-width: 1440px;
@@ -96,7 +115,9 @@ button {
   padding: 30px 40px 50px;
 }
 
-/* Summary */
+/* =========================
+   SUMMARY
+========================= */
 
 .summary-grid {
   display: grid;
@@ -106,13 +127,14 @@ button {
 }
 
 .summary-card {
-  background: #ffffff;
-  border: 1px solid #e7eaf0;
+  background: linear-gradient(135deg, #121827, #0f1625);
+  border: 1px solid #273044;
   border-radius: 12px;
   padding: 20px;
   display: flex;
   align-items: center;
   gap: 14px;
+  color: #d7e6fb;
 }
 
 .summary-icon {
@@ -124,53 +146,48 @@ button {
   justify-content: center;
   font-weight: 700;
   font-size: 18px;
+  background: #27335b;
+  color: #b3bbff;
 }
 
-.investment-icon {
-  background: #eef2ff;
-  color: #4f46e5;
-}
-
-.active-icon {
-  background: #ecfdf5;
-  color: #059669;
-}
-
-.profit-icon {
-  background: #eff6ff;
-  color: #2563eb;
-}
-
+.investment-icon,
+.active-icon,
+.profit-icon,
 .sold-icon {
-  background: #f3f4f6;
-  color: #4b5563;
+  background: #27335b;
+  color: #b3bbff;
 }
 
 .summary-card span {
   display: block;
-  color: #7b8495;
+  color: #9ba8c1;
   font-size: 12px;
   margin-bottom: 5px;
 }
 
 .summary-card strong {
+  color: #ffffff;
   font-size: 21px;
   font-weight: 700;
 }
 
-/* Content */
+/* =========================
+   CONTENT CARD
+========================= */
 
 .content-card {
-  background: #ffffff;
-  border: 1px solid #e7eaf0;
+  background: #121827;
+  border: 1px solid #273044;
   border-radius: 12px;
   overflow: hidden;
+  color: #d7e6fb;
 }
 
 .content-header {
   min-height: 100px;
   padding: 23px 25px;
-  border-bottom: 1px solid #e7eaf0;
+  border-bottom: 1px solid #273044;
+  background: linear-gradient(135deg, #121b2e, #111827);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -184,19 +201,22 @@ button {
 
 .content-header h2 {
   margin: 0;
+  color: #ffffff;
   font-size: 18px;
 }
 
 .content-header p {
   margin: 5px 0 0;
-  color: #7b8495;
+  color: #9ba8c1;
   font-size: 13px;
 }
 
-/* Tabs */
+/* =========================
+   TABS
+========================= */
 
 .tabs {
-  background: #f5f6f8;
+  background: #0d1321;
   padding: 4px;
   border-radius: 8px;
   display: flex;
@@ -206,33 +226,40 @@ button {
 .tab {
   border: 0;
   background: transparent;
-  color: #6b7280;
+  color: #9ba8c1;
   border-radius: 6px;
   padding: 9px 13px;
   font-size: 13px;
   font-weight: 600;
 }
 
+.tab:hover {
+  color: #ffffff;
+}
+
 .tab.active {
-  background: #ffffff;
-  color: #172033;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background: #273552;
+  color: #f6f8ff;
+  box-shadow: none;
 }
 
 .tab span {
   margin-left: 7px;
   font-size: 11px;
-  background: #e9ebef;
+  background: #273044;
+  color: #aeb9ce;
   padding: 2px 6px;
   border-radius: 20px;
 }
 
 .tab.active span {
-  background: #172033;
+  background: #7884ff;
   color: #ffffff;
 }
 
-/* Table */
+/* =========================
+   TABLE
+========================= */
 
 .table-container {
   width: 100%;
@@ -246,33 +273,45 @@ table {
 }
 
 thead {
-  background: #fafbfc;
+  background: #0d1321;
 }
 
 th {
   padding: 13px 20px;
   text-align: left;
-  color: #7b8495;
+  color: #95a2bd;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   white-space: nowrap;
+  border-bottom: 1px solid #222c40;
 }
 
 td {
   padding: 16px 20px;
-  border-top: 1px solid #eef0f3;
+  border-top: 1px solid #222c40;
+  color: #d7e6fb;
   font-size: 13px;
   white-space: nowrap;
 }
 
 tbody tr:hover {
-  background: #fafbfc;
+  background: #192136;
+}
+
+/* Ensure action buttons in the last column are always visible */
+.table-wrapper td:last-child {
+  white-space: nowrap;
+}
+
+.table-wrapper td:last-child button {
+  display: inline-block;
+  margin-left: 8px;
 }
 
 .id-cell {
-  color: #9aa1ad;
+  color: #8e9bb4;
   font-size: 12px;
 }
 
@@ -286,8 +325,8 @@ tbody tr:hover {
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: #eef2ff;
-  color: #4f46e5;
+  background: #27335b;
+  color: #b3bbff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -297,24 +336,26 @@ tbody tr:hover {
 
 .stock-cell strong {
   display: block;
+  color: #ffffff;
   font-size: 13px;
 }
 
 .stock-cell span {
   display: block;
-  color: #8b93a2;
+  color: #8e9bb4;
   font-size: 11px;
   margin-top: 2px;
 }
 
 .live-price {
+  color: #ffffff;
   font-weight: 600;
 }
 
 .live-dot {
   width: 6px;
   height: 6px;
-  background: #16a34a;
+  background: #22c55e;
   border-radius: 50%;
   display: inline-block;
   margin-left: 7px;
@@ -322,30 +363,38 @@ tbody tr:hover {
 }
 
 .profit {
-  color: #059669 !important;
+  color: #34d399 !important;
   font-weight: 600;
 }
 
 .loss {
-  color: #dc2626 !important;
+  color: #ff6b7a !important;
   font-weight: 600;
 }
 
+/* =========================
+   SELL TABLE BUTTON
+========================= */
+
 .sell-button {
-  border: 1px solid #fecaca;
-  background: #fffafa;
-  color: #dc2626;
+  border: 1px solid #743844;
+  background: #2b1921;
+  color: #ff9aa8;
   border-radius: 7px;
   padding: 7px 13px;
   font-size: 12px;
   font-weight: 600;
+  transition: 0.2s ease;
 }
 
 .sell-button:hover {
-  background: #fee2e2;
+  background: #421d27;
+  border-color: #9b4555;
 }
 
-/* Empty */
+/* =========================
+   EMPTY STATE
+========================= */
 
 .empty-state {
   min-height: 350px;
@@ -361,8 +410,8 @@ tbody tr:hover {
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  background: #f1f3f6;
-  color: #7b8495;
+  background: #27335b;
+  color: #b3bbff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -373,12 +422,13 @@ tbody tr:hover {
 
 .empty-state h3 {
   margin: 0;
+  color: #ffffff;
   font-size: 16px;
 }
 
 .empty-state p {
   max-width: 350px;
-  color: #8a92a0;
+  color: #8e9bb4;
   font-size: 13px;
   line-height: 1.6;
   margin: 7px 0 18px;
@@ -386,7 +436,7 @@ tbody tr:hover {
 
 .empty-button {
   border: 0;
-  background: #172033;
+  background: linear-gradient(135deg, #7884ff, #4f46e5);
   color: #ffffff;
   padding: 10px 15px;
   border-radius: 8px;
@@ -394,13 +444,15 @@ tbody tr:hover {
   font-weight: 600;
 }
 
-/* Modal */
+/* =========================
+   MODAL OVERLAY
+========================= */
 
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(5px);
+  background: rgba(2, 5, 12, 0.78);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -408,13 +460,19 @@ tbody tr:hover {
   z-index: 1000;
 }
 
+/* =========================
+   COMMON MODAL
+========================= */
+
 .modal {
   width: 100%;
   max-width: 520px;
-  background: #ffffff;
+  background: #121827;
+  border: 1px solid #2b3650;
   border-radius: 18px;
-  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.32);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
   padding: 28px;
+  color: #e8edf7;
   max-height: calc(100vh - 40px);
   overflow-y: auto;
 }
@@ -425,8 +483,8 @@ tbody tr:hover {
   justify-content: space-between;
   margin: -28px -28px 18px;
   padding: 13px 28px;
-  border-bottom: 1px solid #edf0f5;
-  background: linear-gradient(135deg, #fafbff 0%, #f5f6ff 100%);
+  border-bottom: 1px solid #29334a;
+  background: linear-gradient(135deg, #171f31, #121827);
   border-radius: 18px 18px 0 0;
 }
 
@@ -442,7 +500,7 @@ tbody tr:hover {
   height: 36px;
   place-items: center;
   border-radius: 10px;
-  background: #626be8;
+  background: linear-gradient(135deg, #7884ff, #5b61df);
   box-shadow: 0 6px 14px rgba(98, 107, 232, 0.25);
   color: #fff;
   font-size: 19px;
@@ -450,27 +508,45 @@ tbody tr:hover {
 }
 
 .modal-header h2 {
-  margin: 0;
+  margin-left: -56px;
+  color: #edf1fa;
   font-size: 18px;
 }
 
 .modal-header p {
   margin: 5px 0 0;
-  color: #8a92a0;
+  color: #9ca9c1;
   font-size: 12px;
+}
+
+.modal-eyebrow {
+  margin: 0 0 5px !important;
+  color: #929fff !important;
+  font-size: 10px !important;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .close-button {
   width: 30px;
   height: 30px;
-  border: 0;
-  background: #ffffff;
-  border: 1px solid #e3e7ef;
+  border: 1px solid #35425d;
+  background: #202a3e;
   border-radius: 50%;
-  color: #6b7280;
+  color: #d2d9e8;
   font-size: 20px;
   line-height: 1;
 }
+
+.close-button:hover {
+  background: #2b3650;
+  color: #ffffff;
+}
+
+/* =========================
+   FORM
+========================= */
 
 .form-row {
   display: grid;
@@ -484,7 +560,7 @@ tbody tr:hover {
 
 .form-group label {
   display: block;
-  color: #4b5565;
+  color: #a9b6ce;
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 7px;
@@ -493,17 +569,21 @@ tbody tr:hover {
 .form-group input {
   width: 100%;
   height: 42px;
-  border: 1px solid #d9dfeb;
+  border: 1px solid #34405a;
   border-radius: 10px;
   padding: 0 12px;
   outline: none;
-  color: #172033;
-  background: #ffffff;
+  color: #edf1fa;
+  background: #0d1321;
+}
+
+.form-group input::placeholder {
+  color: #65738e;
 }
 
 .form-group input:focus {
-  border-color: #626be8;
-  box-shadow: 0 0 0 4px rgba(98, 107, 232, 0.12);
+  border-color: #7884ff;
+  box-shadow: 0 0 0 4px rgba(120, 132, 255, 0.14);
 }
 
 .price-input {
@@ -522,24 +602,27 @@ tbody tr:hover {
   padding-left: 29px;
 }
 
+/* =========================
+   INVESTMENT PREVIEW
+========================= */
+
 .investment-preview {
-  background: linear-gradient(135deg, #f4f5ff, #f9faff);
-  border: 1px solid #dfe3ff;
+  background: linear-gradient(135deg, #171f31, #121827);
+  border: 1px solid #303c57;
   border-radius: 11px;
   padding: 7px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* margin: 4px 0 22px; */
 }
 
 .investment-preview span {
-  color: #7b8495;
+  color: #9aa7c0;
   font-size: 12px;
 }
 
 .investment-preview strong {
-  color: #454ebd;
+  color: #edf1fa;
   font-size: 19px;
 }
 
@@ -551,28 +634,22 @@ tbody tr:hover {
   margin-bottom: 0;
 }
 
-/* .entry-summary-row .investment-preview {
-  min-height: 42px;
-  margin: 0 0 17px;
-  padding: 8px 12px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 2px;
-} */
-
 .entry-summary-row .investment-preview strong {
   font-size: 16px;
 }
 
 .form-section-label {
   margin: 0 0 15px;
-  color: #8992a3;
+  color: #9aa7c0;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
+
+/* =========================
+   LTP CARD
+========================= */
 
 .ltp-card {
   display: flex;
@@ -581,15 +658,15 @@ tbody tr:hover {
   gap: 16px;
   margin: 30px 0 18px;
   padding: 13px 14px;
-  border: 1px solid #dce2ff;
+  border: 1px solid #303c57;
   border-radius: 10px;
-  background: #f6f7ff;
-  color: #596275;
+  background: #171f31;
+  color: #9ca9c1;
   font-size: 12px;
 }
 
 .ltp-card.ready {
-  color: #172033;
+  color: #edf1fa;
 }
 
 .ltp-card.ready > div {
@@ -601,7 +678,7 @@ tbody tr:hover {
 
 .ltp-label {
   grid-column: 1 / -1;
-  color: #6873c7;
+  color: #929fff;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -620,17 +697,20 @@ tbody tr:hover {
 .use-ltp-button {
   border: 0;
   border-radius: 7px;
-  background: #626be8;
+  background: linear-gradient(135deg, #7884ff, #5b61df);
   color: #fff;
-  cursor: pointer;
   padding: 8px 10px;
   font-size: 12px;
   font-weight: 700;
 }
 
 .use-ltp-button:hover {
-  background: #4e58d8;
+  background: linear-gradient(135deg, #8994ff, #676eea);
 }
+
+/* =========================
+   MODAL ACTIONS
+========================= */
 
 .modal-actions {
   display: flex;
@@ -649,24 +729,38 @@ tbody tr:hover {
 }
 
 .cancel-button {
-  border: 1px solid #dfe3e8;
-  background: #ffffff;
-  color: #4b5563;
+  border: 1px solid #3a465e;
+  background: #1a2335;
+  color: #d9e0ee;
+}
+
+.cancel-button:hover {
+  background: #253149;
 }
 
 .save-button {
   border: 0;
-  background: #172033;
+  background: linear-gradient(135deg, #7884ff, #5b61df);
   color: #ffffff;
+}
+
+.save-button:hover {
+  background: linear-gradient(135deg, #8994ff, #676eea);
 }
 
 .confirm-sell-button {
   border: 0;
-  background: #dc2626;
+  background: linear-gradient(135deg, #dc2626, #991b1b);
   color: #ffffff;
 }
 
-/* Sell */
+.confirm-sell-button:hover {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+
+/* =========================
+   SELL SUMMARY
+========================= */
 
 .sell-summary {
   display: grid;
@@ -676,44 +770,175 @@ tbody tr:hover {
 }
 
 .sell-summary > div {
-  background: #f7f8fa;
-  border-radius: 8px;
+  background: #0d1625;
+  border: 1px solid #293750;
+  border-radius: 9px;
   padding: 12px;
 }
 
 .sell-summary span {
   display: block;
-  color: #8a92a0;
+  color: #8998b3;
   font-size: 11px;
   margin-bottom: 4px;
 }
 
 .sell-summary strong {
+  color: #edf1fa;
   font-size: 14px;
 }
+
+/* =========================
+   SELL MODAL
+========================= */
+
+.sell-modal {
+  background: #121827;
+  color: #e8edf7;
+  border: 1px solid #2b3650;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65);
+}
+
+
+.sell-modal .modal-header {
+  background: linear-gradient(135deg, #171f31, #121827);
+  border-bottom: 1px solid #29334a;
+}
+
+.sell-modal .modal-header h2 {
+  color: #edf1fa;
+}
+
+.sell-modal .modal-header p {
+  color: #9ca9c1;
+}
+
+.sell-modal .close-button {
+  background: #202a3e;
+  border: 1px solid #35425d;
+  color: #d2d9e8;
+}
+
+.sell-modal p {
+  color: #9ca9c1;
+}
+
+.sell-modal p strong {
+  color: #edf1fa;
+}
+
+/* Sell input */
+
+.sell-modal .form-group label {
+  color: #a9b6ce;
+}
+
+.sell-modal .form-group input {
+  background: #0d1321;
+  border: 1px solid #34405a;
+  color: #edf1fa;
+}
+
+.sell-modal .form-group input:focus {
+  border-color: #7884ff;
+  box-shadow: 0 0 0 4px rgba(120, 132, 255, 0.14);
+}
+
+/* Profit / Loss */
+
+.sell-modal .investment-box {
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #101a2c, #0d1625);
+  border: 1px solid #293750;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sell-modal .investment-box span {
+  color: #9ca9c1;
+  font-size: 12px;
+}
+
+.sell-modal .investment-box strong {
+  color: #4ade80;
+  font-size: 18px;
+}
+
+/* Sell modal summary */
+
+.sell-modal .sell-summary > div {
+  background: linear-gradient(135deg, #101a2c, #0d1625);
+  border: 1px solid #293750;
+}
+
+.sell-modal .sell-summary span {
+  color: #8998b3;
+}
+
+.sell-modal .sell-summary strong {
+  color: #edf1fa;
+}
+
+/* Sell buttons */
+
+.sell-modal .modal-actions {
+  padding-top: 25px;
+  margin-top: 22px;
+  border-top: 1px solid #29334a;
+}
+
+.sell-modal .cancel-button {
+  background: #1a2335;
+  border: 1px solid #3a465e;
+  color: #d9e0ee;
+}
+
+.sell-modal .cancel-button:hover {
+  background: #253149;
+}
+
+.sell-modal .confirm-sell-button {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  border: 0;
+  color: #ffffff;
+  box-shadow: 0 5px 14px rgba(220, 38, 38, 0.2);
+}
+
+.sell-modal .confirm-sell-button:hover {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+
+/* =========================
+   SELL WARNING
+========================= */
 
 .sell-warning {
   display: flex;
   gap: 10px;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
+  background: #21180e;
+  border: 1px solid #5a3515;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 22px;
 }
 
 .sell-warning span {
-  color: #ea580c;
+  color: #fb923c;
 }
 
 .sell-warning p {
   margin: 0;
-  color: #9a3412;
+  color: #fdba74;
   font-size: 12px;
   line-height: 1.5;
 }
 
-/* Responsive */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 1000px) {
   .summary-grid {
@@ -771,181 +996,62 @@ tbody tr:hover {
     gap: 0;
   }
 
+  .sell-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .modal {
     padding: 20px;
+    max-height: calc(100vh - 30px);
+  }
+
+  .modal-header {
+    margin: -20px -20px 18px;
+    padding: 13px 20px;
+  }
+
+  .modal-actions {
+    padding-top: 20px;
   }
 }
 
-/* Dark theme */
-body {
-  background: #090d18;
-  color: #e8edf7;
+@media (max-width: 420px) {
+  .topbar {
+    padding: 13px 14px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+  }
+
+  .brand h1 {
+    font-size: 14px;
+  }
+
+  .add-button {
+    padding: 8px 10px;
+  }
+
+  .add-button span {
+    font-size: 17px;
+  }
+
+  .sell-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
 }
 
-.app {
-  background: radial-gradient(circle at 15% -10%, rgba(87, 98, 227, 0.2), transparent 34%), #090d18;
-}
-
-.topbar {
-  background: rgba(13, 18, 32, 0.9);
-  border-color: #273044;
-  backdrop-filter: blur(14px);
-}
-
-.brand-icon,
-.add-button,
-.empty-button {
-  background: linear-gradient(135deg, #7884ff, #4f46e5);
-}
-
-.brand p,
-.content-header p,
-.summary-card span,
-.empty-state p {
-  color: #9ba8c1;
-}
-
-.summary-card,
-.content-card {
-  background: #121827;
-  border-color: #273044;
-}
-
-.content-header {
-  border-color: #273044;
-}
-
-.tabs,
-thead {
-  background: #0d1321;
-}
-
-.tab {
-  color: #9ba8c1;
-}
-
-.tab.active {
-  background: #273552;
-  color: #f6f8ff;
-  box-shadow: none;
-}
-
-.tab span {
-  background: #273044;
-}
-
-.tab.active span {
-  background: #7884ff;
-}
-
-th {
-  color: #95a2bd;
-}
-
-td {
-  border-color: #222c40;
-}
-
-tbody tr:hover {
-  background: #192136;
-}
-
-.id-cell,
-.stock-cell span {
-  color: #8e9bb4;
-}
-
-.stock-avatar,
-.empty-icon {
-  background: #27335b;
-  color: #b3bbff;
-}
-
-.sell-button {
-  border-color: #743844;
-  background: #2b1921;
-  color: #ff9aa8;
-}
-
-.modal-overlay {
-  background: rgba(2, 5, 12, 0.78);
-}
-
-.modal {
-  background: #121827;
-  border: 1px solid #2b3650;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
-}
-
-.modal-header {
-  margin: -28px -28px 18px;
-  padding: 13px 28px;
-  border-bottom: 1px solid #29334a;
-  border-radius: 18px 18px 0 0;
-  background: #171f31;
-}
-
-.modal-header h2,
-.modal-header p,
-.form-group label,
-.investment-preview strong {
-  color: #edf1fa;
-}
-
-.modal-header p {
-  color: #9ca9c1;
-}
-
-.modal-eyebrow {
-  margin: 0 0 5px !important;
-  color: #929fff !important;
-  font-size: 10px !important;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.close-button {
-  background: #202a3e;
-  border-color: #35425d;
-  color: #d2d9e8;
-}
-
-.form-section-label,
-.ltp-label,
-.investment-preview span {
-  color: #9aa7c0;
-}
-
-.form-group input {
-  border-color: #34405a;
-  background: #0d1321;
-  color: #edf1fa;
-}
-
-.form-group input:focus {
-  border-color: #7884ff;
-  box-shadow: 0 0 0 4px rgba(120, 132, 255, 0.14);
-}
-
-.investment-preview,
-.ltp-card {
-  background: #171f31;
-  border-color: #303c57;
-}
-
-.ltp-card.ready {
-  color: #edf1fa;
-}
-
-.cancel-button {
-  border-color: #3a465e;
-  background: #1a2335;
-  color: #d9e0ee;
-}
-
-.save-button,
-.confirm-sell-button,
-.use-ltp-button {
-  background: linear-gradient(135deg, #7884ff, #5b61df);
-}

@@ -27,3 +27,8 @@ export const sellEntry = async (id, sellPrice) => {
 
   return response.data;
 };
+
+export const deleteEntry = async (id) => {
+  const response = await axios.delete(`${API_URL}/${id}`);
+  return response.data;
+};

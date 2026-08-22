@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   getActiveEntries,
+  deleteEntry,
 } from "../services/entryApi";
 import AddEntryModal from "./AddEntryModal";
 import SellModal from "./SellModal";
@@ -90,11 +91,32 @@ export default function ActiveEntries() {
 
                 <td>
                   <button
-                    onClick={() =>
-                      setSelectedEntry(entry)
-                    }
+                    onClick={() => setSelectedEntry(entry)}
                   >
-                    Sell
+                    Sell 22
+                  </button>
+
+                  <button
+                    style={{ marginLeft: 8 }}
+                    className="sell-button"
+                    onClick={async () => {
+                      if (
+                        !window.confirm(
+                          "Delete this entry? This cannot be undone."
+                        )
+                      )
+                        return;
+
+                      try {
+                        await deleteEntry(entry._id);
+                        loadEntries();
+                      } catch (err) {
+                        console.error(err);
+                        alert("Failed to delete entry");
+                      }
+                    }}
+                  >
+                    Delete
                   </button>
                 </td>
               </tr>
