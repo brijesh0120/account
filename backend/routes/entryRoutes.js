@@ -102,6 +102,135 @@ router.post("/", async (req, res) => {
 });
 
 /*
+  EDIT / UPDATE ENTRY
+  PUT /api/entries/:id
+*/
+router.put("/:id", async (req, res) => {
+  try {
+    const {
+      stockName,
+      symbol,
+      qty,
+      entryPrice,
+    } = req.body;
+
+    /*
+      Find only active entry
+    */
+    const entry = await Entry.findOne({
+      _id: req.params.id,
+      status: "active",
+    });
+
+    if (!entry) {
+      return res.status(404).json({
+        success: false,
+        message: "Active entry not found",
+      });
+    }
+
+    /*
+      Validate quantity
+    */
+    const quantity = Number(qty);
+
+    if (
+      qty !== undefined &&
+      (!Number.isFinite(quantity) || quantity <= 0)
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid quantity",
+      });
+    }
+
+    /*
+      Validate entry price
+    */
+    const price = Number(entryPrice);
+
+    if (
+      entryPrice !== undefined &&
+      (!Number.isFinite(price) || price <= 0)
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid entry price",
+      });
+    }
+
+    /*
+      Update fields
+    */
+    if (stockName !== undefined) {
+      entry.stockName =
+        stockName.trim() ||
+        entry.symbol;
+    }
+
+    if (symbol !== undefined) {
+      entry.symbol = symbol.trim().toUpperCase();
+
+      /*
+        If stock name wasn't explicitly changed,
+        update it with new symbol
+      */
+      if (stockName === undefined) {
+        entry.stockName = entry.symbol;
+      }
+    }
+
+    if (qty !== undefined) {
+      entry.qty = quantity;
+    }
+
+    if (entryPrice !== undefined) {
+      entry.entryPrice = price;
+    }
+
+    /*
+      Recalculate total investment
+    */
+    entry.totalInvestment =
+      entry.qty * entry.entryPrice;
+
+    /*
+      Recalculate live price difference
+      if live price exists
+    */
+    if (
+      entry.livePrice !== undefined &&
+      entry.livePrice !== null
+    ) {
+      entry.pointDifference =
+        entry.livePrice - entry.entryPrice;
+
+      entry.percentage =
+        entry.entryPrice > 0
+          ? (entry.pointDifference /
+              entry.entryPrice) *
+            100
+          : 0;
+    }
+
+    await entry.save();
+
+    res.json({
+      success: true,
+      message: "Entry updated successfully",
+      data: entry,
+    });
+  } catch (error) {
+    console.error("UPDATE ENTRY ERROR:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to update entry",
+    });
+  }
+});
+
+/*
   SELL ENTRY
 */
 router.put("/:id/sell", async (req, res) => {
@@ -168,6 +297,7 @@ router.put("/:id/sell", async (req, res) => {
 
 /*
   DELETE ENTRY
+  DELETE /api/entries/:id
 */
 router.delete("/:id", async (req, res) => {
   try {
@@ -180,9 +310,14 @@ router.delete("/:id", async (req, res) => {
       });
     }
 
-    await Entry.deleteOne({ _id: req.params.id });
+    await Entry.deleteOne({
+      _id: req.params.id,
+    });
 
-    res.json({ success: true });
+    res.json({
+      success: true,
+      message: "Entry deleted successfully",
+    });
   } catch (error) {
     console.error("DELETE ENTRY ERROR:", error);
 
